@@ -15,3 +15,9 @@ RUN apk add --no-cache --virtual .build-deps \
     && cp gitgraph.js/src/gitgraph.* lib/ \
     && rm -Rf gitgraph.js \
     && apk del .build-deps
+
+COPY . ./
+COPY nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+
+ENTRYPOINT ["./docker-run.sh"]
