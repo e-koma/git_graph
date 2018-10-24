@@ -1,5 +1,12 @@
 FROM node:10.12-alpine
 
+USER root
+WORKDIR /root
+
+RUN apk update \
+    && apk add --no-cache \
+       nginx
+
 RUN apk add --no-cache --virtual .build-deps \
       git \
     && npm install --save gitgraph.js \
