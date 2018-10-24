@@ -1,16 +1,16 @@
 var gitgraph = new GitGraph();
 
-// masterブランチを作成 ＆ コミット
+// create master branch & commit
 var master = gitgraph.branch('master');
 gitgraph.commit();
 
-// developブランチを作成 ＆ 2回コミット
+// create develop branch & twice commits
 var develop = gitgraph.branch('develop');
 gitgraph.commit().commit();
 
-// HEADをmasterブランチに切り替えてコミット
+// checkout master branch & commit
 master.checkout();
 gitgraph.commit();
 
-// developブランチをmasterブランチにマージ
+// merge develop to master
 develop.merge(master);
